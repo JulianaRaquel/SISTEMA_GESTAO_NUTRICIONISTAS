@@ -113,7 +113,9 @@ def plano_alimentar(request, id):
 
     elif request.method == "GET":
         refeicoes = NovaRefeicao.objects.filter(paciente=paciente).order_by("horario")
-        return render(request, 'plano_alimentar.html', {'paciente': paciente, 'refeicoes': refeicoes})
+        opcoes = Opcao.objects.all()
+        return render(request, 'plano_alimentar.html', {'paciente': paciente, 'refeicoes': refeicoes,
+                                                        'opcoes': opcoes})
 
 
 @login_required(login_url='/logar/')
@@ -142,11 +144,13 @@ def opcao(request, id_paciente):
         imagem = request.FILES.get('imagem')
         descricao = request.POST.get('descricao')
 
-        opcao = Opcao(refeicao_id=id_refeicao,
+        opcao = Opcao(refeicao=NovaRefeicao.objects.get(id=id_refeicao),
                       imagem=imagem,
                       descricao=descricao)
+
         opcao.save()
 
-        messages.add_message(request, constants.SUCCESS, 'Refeição cadastrada')
+        messages.add_message(request, constants.SUCCESS, 'Opção cadastrada')
         return redirect(f'/plano_alimentar/{id_paciente}')
+
 

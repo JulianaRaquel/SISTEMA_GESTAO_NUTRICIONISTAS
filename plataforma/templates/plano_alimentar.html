@@ -52,17 +52,22 @@
                 </div>
 
                 <div class="body-refeicao">
-                    <div class="opcao">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <img width="100%" src="{% static 'plataforma/img/perfil1.png' %}">
-                            </div>
+                    {% for opcao in opcoes %}
+                        {% if opcao.refeicao == i %}
+                            <div class="opcao">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <img width="100%" src="{{opcao.imagem.url}}">
+                                    </div>
 
-                            <div class="col-md-10">
-                                Teste 2
+                                    <div class="col-md-10">
+                                        {{opcao.descricao}}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                            <br>
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -146,7 +151,7 @@
 
 
 
-                        <div id="form-opcao" style="display: None;">
+                        <div id="form-opcao" style="display: none;">
                             <form action="{% url 'opcao' paciente.id %}" method="POST" enctype='multipart/form-data'>{% csrf_token %}
 
                                 <label for="validationServerUsername">Selecione a refeição</label>
@@ -177,9 +182,6 @@
                                 <input type="submit" value="Cadastrar" class="btn btn-success">
                             </form>
                         </div>
-
-
-
 
                     </form>
                 </div>

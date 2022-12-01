@@ -39,18 +39,17 @@ class Refeicao(models.Model):
 
 class NovaRefeicao(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
-    titulo = models.CharField(max_length=50)
+    titulo = models.CharField(max_length=30)
     horario = models.TimeField()
     carboidratos = models.IntegerField()
     proteinas = models.IntegerField()
     gorduras = models.IntegerField()
 
     def __str__(self):
-        return self.titulo
+        return str(self.titulo)
 
 class Opcao(models.Model):
-    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
-    refeicao = models.ForeignKey(Refeicao, on_delete=models.CASCADE)
+    refeicao = models.ForeignKey(NovaRefeicao, on_delete=models.CASCADE)
     imagem = models.ImageField(upload_to='opcoes')
     descricao = models.TextField()
 

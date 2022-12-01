@@ -8,6 +8,6 @@ urlpatterns = [
     path('grafico_peso/<str:id>/', grafico_peso, name="grafico_peso"),
     path('plano_alimentar_listar/', plano_alimentar_listar, name="plano_alimentar_listar"),
     path('plano_alimentar/<str:id>/', plano_alimentar, name="plano_alimentar"),
-    path('refeicao/<str:id_paciente>/', refeicao, name="refeicao"),
+    path('refeicao/<int:id_paciente>/', refeicao, name="refeicao"),
     path('opcao/<str:id_paciente>/', opcao, name="opcao"),
 ]

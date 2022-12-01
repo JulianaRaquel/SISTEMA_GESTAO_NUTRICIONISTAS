@@ -8,6 +8,7 @@ import os
 from django.conf import settings
 from .models import Ativacao
 from hashlib import sha256
+from django.core.mail import send_mail
 
 def cadastro(request):
     if request.method == "GET":
@@ -36,7 +37,7 @@ def cadastro(request):
 
             path_template = os.path.join(settings.BASE_DIR, 'autenticacao/templates/emails/cadastro_confirmado.html')
             email_html(path_template, 'Cadastro confirmado', [email, ], username=usuario, link_ativacao=f"127.0.0.1:8000/ativar_conta/{token}")
-            messages.add_message(request, constants.SUCCESS, 'Cadastro realizado com sucesso !!!')
+            messages.add_message(request, constants.SUCCESS, 'Cadastro realizado. Acesse o e-mail para ativar sua conta')
             return redirect('/logar')
         except:
             messages.add_message(request, constants.ERROR, 'Erro interno do sistema')
@@ -76,6 +77,12 @@ def ativar_conta(request, token):
     user.save()
     token.ativo = True
     token.save()
-    messages.add_message(request, constants.SUCCESS, 'Conta ativa com sucesso')
+    messages.add_message(request, constants.SUCCESS, 'Conta ativada com sucesso')
     return redirect('/logar')
+
+
+def tela_home(request):
+    return redirect('/cadastro')
+
+
 

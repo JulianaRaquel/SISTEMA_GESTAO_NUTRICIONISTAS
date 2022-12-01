@@ -38,20 +38,20 @@
 
                     <form action="{% url 'cadastro' %}" method="POST">{% csrf_token %}
                         <span class="bold">Nome de usuário</span>
-                        <input class="form-control input-form" name="usuario" type="text" placeholder="Digite seu nome...">
+                        <input class="form-control input-form" name="usuario" type="text" placeholder="Digite seu nome">
                         <br>
                         <span class="bold">E-mail</span>
-                        <input class="form-control input-form" name="email" type="text" placeholder="Digite seu E-mail...">
+                        <input class="form-control input-form" name="email" type="text" placeholder="Digite seu E-mail">
                         <br>
                         <div class="row">
                             <div class="col-md">
                                 <span class="bold">Senha</span>
-                                <input class="form-control input-form" name="senha" type="password" placeholder="Digite sua senha...">
+                                <input class="form-control input-form" name="senha" type="password" placeholder="Digite sua senha">
                             </div>
 
                             <div class="col-md">
                                 <span class="bold">Confirmar senha</span>
-                                <input class="form-control input-form" name="confirmar_senha" type="password" placeholder="Confirme sua senha...">
+                                <input class="form-control input-form" name="confirmar_senha" type="password" placeholder="Confirme sua senha">
                             </div>
                         </div>
                         <br>
