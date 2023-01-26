@@ -28,7 +28,7 @@ def cadastro(request):
             user = User.objects.create_user(username=usuario,
                                             email=email,
                                             password=senha,
-                                            is_active=False)
+                                            is_active=True)
             user.save()
 
             token = sha256(f"{usuario}{email}".encode()).hexdigest()
