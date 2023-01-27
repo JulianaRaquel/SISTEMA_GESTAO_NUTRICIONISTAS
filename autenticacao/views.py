@@ -41,7 +41,7 @@ def cadastro(request):
             messages.add_message(request, constants.SUCCESS, 'Cadastro realizado. Acesse o e-mail para ativar sua conta')
             return redirect('/login')
         except:
-            messages.add_message(request, constants.ERROR, 'Erro interno do sistema !!!')
+            messages.add_message(request, constants.ERROR, 'Erro interno do sistema')
             return redirect('/cadastro')
 
 
@@ -57,7 +57,7 @@ def login(request):
         usuario = auth.authenticate(request, username=username, password=senha)
 
         if not usuario:
-            messages.add_message(request, constants.ERROR, 'Username ou senha inválidos !!!')
+            messages.add_message(request, constants.ERROR, 'Username ou senha inválidos')
             return redirect('/login')
         else:
             # se o usuário existe no banco de dados, pe feita a autenticação do usuário abaixo
