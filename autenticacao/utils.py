@@ -33,11 +33,11 @@ def password_is_valid(request, password, confirm_password):
 
 
 def email_html(path_template: str, assunto: str, para: list, **kwargs) -> dict:
+    #__import__('ipdb').set_trace()
     html_content = render_to_string(path_template, kwargs)
     text_content = strip_tags(html_content)
 
     email = EmailMultiAlternatives(assunto, text_content, settings.EMAIL_HOST_USER, para)
-
     email.attach_alternative(html_content, "text/html")
     email.send()
     return {'status': 1}

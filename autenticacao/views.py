@@ -24,6 +24,7 @@ def cadastro(request):
         if not password_is_valid(request, senha, confirmar_senha):
             return redirect('/cadastro')
 
+
         try:
             user = User.objects.create_user(username=usuario,
                                             email=email,
@@ -38,13 +39,13 @@ def cadastro(request):
             path_template = os.path.join(settings.BASE_DIR, 'autenticacao/templates/emails/cadastro_confirmado.html')
             email_html(path_template, 'Cadastro confirmado', [email, ], username=usuario, link_ativacao=f"127.0.0.1:8000/ativar_conta/{token}")
             messages.add_message(request, constants.SUCCESS, 'Cadastro realizado. Acesse o e-mail para ativar sua conta')
-            return redirect('/logar')
+            return redirect('/login')
         except:
             messages.add_message(request, constants.ERROR, 'Erro interno do sistema')
             return redirect('/cadastro')
 
 
-def logar(request):
+def login(request):
     if request.method == "GET":
         if request.user.is_authenticated:
             return redirect('/pacientes')
@@ -57,7 +58,7 @@ def logar(request):
 
         if not usuario:
             messages.add_message(request, constants.ERROR, 'Username ou senha inválidos')
-            return redirect('/logar')
+            return redirect('/login')
         else:
             # se o usuário existe no banco de dados, pe feita a autenticação do usuário abaixo
             auth.login(request, usuario)
@@ -65,20 +66,20 @@ def logar(request):
 
 def sair(request):
     auth.logout(request)
-    return redirect('/logar')
+    return redirect('/login')
 
 def ativar_conta(request, token):
     token = get_object_or_404(Ativacao, token=token)
     if token.ativo:
         messages.add_message(request, constants.WARNING, 'Esse token já foi usado')
-        return redirect('/logar')
+        return redirect('/login')
     user = User.objects.get(username=token.user.username)
     user.is_active = True
     user.save()
     token.ativo = True
     token.save()
     messages.add_message(request, constants.SUCCESS, 'Conta ativada com sucesso')
-    return redirect('/logar')
+    return redirect('/login')
 
 
 def tela_home(request):
