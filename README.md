@@ -17,6 +17,8 @@
 
 ## Instruções para instalação
 
+#### _Versão do Python requerida:_ 3.9.13
+
 ### Faça o clone do projeto:
 ```commandline
 git clone git@github.com:JulianaRaquel/SISTEMA_GESTAO_NUTRICIONISTAS.git
