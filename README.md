@@ -36,14 +36,16 @@ source venv/bin/activate
 ```commandline
 venv\Scripts\Activate
 ```
-### Instalando dependências:
+### Instalar dependências:
 ```commandline
 pip install -r requirements.txt
 ```
-### Aplicando migrações:
+
+### Copiar as variáveis de ambiente:
 ```commandline
-python3 manage.py makemigrations
+cp .env.example .env
 ```
+### Aplicar as migrações:
 ```commandline
 python3 manage.py migrate
 ```
