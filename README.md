@@ -19,7 +19,7 @@
 
 ### Faça o clone do projeto:
 ```commandline
-git clone
+git clone git@github.com:JulianaRaquel/SISTEMA_GESTAO_NUTRICIONISTAS.git
 ```
 ### Criar ambiente virtual (venv):
 ```commandline
