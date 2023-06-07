@@ -7,6 +7,7 @@
 * ### Django
 * ### Git
 * ### PostgreSQL
+* ### Docker
 
 ## Funcionallidades do Projeto
 ### 1. Sistema de cadastro e login de usuário
