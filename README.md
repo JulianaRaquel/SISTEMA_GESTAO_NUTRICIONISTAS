@@ -12,7 +12,7 @@
 ### 1. Sistema de cadastro e login de usuário
 ### 2. Cadastro de pacientes
 ### 3. Listagem de dados dos pacientes
-### 4. Adiciona informaçoes referentes ao estado de saúde do paciente e exibe a evolução do peso em um gráfico
+### 4. Adiciona informações referentes ao estado de saúde do paciente e exibe a evolução do peso em um gráfico
 ### 5. Cadastro de um plano alimentar personalizado para o paciente que inclui diferentes opções para cada tipo de refeição (café da manhã, almoço e jantar)
 
 ## Instruções para instalação
